@@ -31,6 +31,11 @@ export class AppComponent implements OnInit {
       title: 'Graph',
       url: '/graph',
       icon: 'pulse'
+    },
+    {
+      title: 'My coins',
+      url: '/my-coins',
+      icon: 'cash'
     }
   ];
 

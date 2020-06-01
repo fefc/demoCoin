@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'graph',
     loadChildren: () => import('./graph/graph.module').then( m => m.GraphPageModule)
+  },
+  {
+    path: 'my-coins',
+    loadChildren: () => import('./my-coins/my-coins.module').then( m => m.MyCoinsPageModule)
   }
 ];
 
