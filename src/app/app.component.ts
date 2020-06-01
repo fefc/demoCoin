@@ -15,7 +15,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Dashboard',
       url: '/dashboard',
-      icon: 'clipboard'
+      icon: 'file-tray'
+    },
+    {
+      title: 'Details',
+      url: '/details',
+      icon: 'file-tray-full'
     }
   ];
 
