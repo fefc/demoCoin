@@ -21,6 +21,11 @@ export class AppComponent implements OnInit {
       title: 'Details',
       url: '/details',
       icon: 'file-tray-full'
+    },
+    {
+      title: 'Converter',
+      url: '/converter',
+      icon: 'calculator'
     }
   ];
 
