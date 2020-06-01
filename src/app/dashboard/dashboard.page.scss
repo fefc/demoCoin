@@ -1,0 +1,28 @@
+ion-grid {
+  height: 100%;
+
+  display: flex;
+  flex-flow: column;
+
+  .header-row {
+    flex-grow: 0;
+  }
+
+  ion-row {
+    flex-grow: 1;
+
+    ion-col {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+      ion-item {
+        text-align: center;
+
+        ion-icon {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
