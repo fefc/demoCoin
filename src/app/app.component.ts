@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
       title: 'Converter',
       url: '/converter',
       icon: 'calculator'
+    },
+    {
+      title: 'Graph',
+      url: '/graph',
+      icon: 'pulse'
     }
   ];
 

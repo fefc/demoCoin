@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'converter',
     loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule)
+  },
+  {
+    path: 'graph',
+    loadChildren: () => import('./graph/graph.module').then( m => m.GraphPageModule)
   }
 ];
 
