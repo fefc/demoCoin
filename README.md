@@ -1,1 +1,3 @@
 # demoCoin
+
+Hello git.
