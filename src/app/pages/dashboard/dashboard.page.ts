@@ -3,7 +3,7 @@ import { AlertController } from '@ionic/angular';
 
 import { BlockchainService } from './../../services/blockchain/blockchain.service';
 
-const DEFAULT_CURRENCIES: Array<string> = ['USD', 'EUR', 'YEN', 'AUS', 'SOO', 'TOO', 'BOO', 'LOO'];
+import { Rate } from './../../models/rate';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,26 +13,32 @@ const DEFAULT_CURRENCIES: Array<string> = ['USD', 'EUR', 'YEN', 'AUS', 'SOO', 'T
 export class DashboardPage implements OnInit {
 
   private sellBtc: Boolean;
-  private currencies: Array<string>;
+  private availableRates: Array<Rate>;
+  private displayedRates: Array<Rate>;
 
   constructor(public alertController: AlertController, public blockchainService: BlockchainService) {
     this.sellBtc = true;
-    this.currencies = JSON.parse(JSON.stringify(DEFAULT_CURRENCIES));
+    this.availableRates = [];
+    this.displayedRates = [];
   }
 
   ngOnInit() {
-    
+    this.blockchainService.getExchangeRates().then((currencies) => {
+      this.availableRates = currencies;
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   async addCurrency() {
     let inputs = [];
 
-    for (let currency of DEFAULT_CURRENCIES.filter((c) => this.currencies.indexOf(c) === -1)) {
+    for (let rate of this.availableRates.filter((c) => this.displayedRates.indexOf(c) === -1)) {
       inputs.push({
-        name: currency,
+        name: rate.currency,
         type: 'checkbox',
-        label: currency,
-        value: currency,
+        label: rate.currency,
+        value: rate,
         checked: false
       });
     }
@@ -49,9 +55,9 @@ export class DashboardPage implements OnInit {
             role: 'cancel',
           }, {
             text: 'Add',
-            handler: (newCurrencies) => {
-              for (let newCurrency of newCurrencies) {
-                this.currencies.push(newCurrency);
+            handler: (newRates) => {
+              for (let newRate of newRates) {
+                this.displayedRates.push(newRate);
               }
             }
           }
@@ -70,7 +76,7 @@ export class DashboardPage implements OnInit {
   }
 
   deleteCurrency(index: number) {
-    this.currencies.splice(index, 1);
+    this.displayedRates.splice(index, 1);
   }
 
   swap() {
