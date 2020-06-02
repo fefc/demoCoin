@@ -27,15 +27,20 @@ export class ProfileService {
 
   public getMyCoinsAmount(): number {
     if (this.localStorageAvailable) {
-      return Number(window.localStorage.getItem('my-coins'));
+      const value: string = window.localStorage.getItem('my-coins')
+      return value ? Number(value) : null;
     } else {
-      return 0;
+      return null;
     }
   }
 
   public setMyCointsAmount(value: number) {
     if (this.localStorageAvailable) {
-      window.localStorage.setItem('my-coins', value.toString());
+      if (value) {
+        window.localStorage.setItem('my-coins', value.toString());
+      } else {
+        this.clearStorage();
+      }
     }
   }
 }
