@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+const DEFAULT_CURRENCIES: Array<string> = ['USD', 'EUR', 'YEN', 'AUS', 'SOO', 'TOO', 'BOO', 'LOO'];
+
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.page.html',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConverterPage implements OnInit {
 
-  constructor() { }
+  private sellBtc: Boolean;
+  private currencies: Array<string>;
+
+  private toBeConvertedValue: number;
+
+  constructor() {
+    this.sellBtc = true;
+    this.currencies = JSON.parse(JSON.stringify(DEFAULT_CURRENCIES));
+
+    this.toBeConvertedValue = 0;
+  }
 
   ngOnInit() {
+
+  }
+
+  convertedValue() {
+    return this.toBeConvertedValue * 1.5;
   }
 
 }
