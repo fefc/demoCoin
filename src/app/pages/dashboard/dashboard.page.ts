@@ -24,7 +24,6 @@ export class DashboardPage implements OnInit {
   private displayedRates: Array<Rate>;
 
   constructor(public alertController: AlertController, public blockchainService: BlockchainService) {
-    this.sellBtc = true;
     this.availableRates = [];
     this.displayedRates = [];
   }
