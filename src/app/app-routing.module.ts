@@ -9,23 +9,23 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
     path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
   },
   {
     path: 'converter',
-    loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule)
+    loadChildren: () => import('./pages/converter/converter.module').then( m => m.ConverterPageModule)
   },
   {
     path: 'graph',
-    loadChildren: () => import('./graph/graph.module').then( m => m.GraphPageModule)
+    loadChildren: () => import('./pages/graph/graph.module').then( m => m.GraphPageModule)
   },
   {
     path: 'my-coins',
-    loadChildren: () => import('./my-coins/my-coins.module').then( m => m.MyCoinsPageModule)
+    loadChildren: () => import('./pages/my-coins/my-coins.module').then( m => m.MyCoinsPageModule)
   }
 ];
 

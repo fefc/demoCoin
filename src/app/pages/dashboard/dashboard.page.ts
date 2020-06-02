@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
+import { BlockchainService } from './../../services/blockchain/blockchain.service';
+
 const DEFAULT_CURRENCIES: Array<string> = ['USD', 'EUR', 'YEN', 'AUS', 'SOO', 'TOO', 'BOO', 'LOO'];
 
 @Component({
@@ -13,13 +15,13 @@ export class DashboardPage implements OnInit {
   private sellBtc: Boolean;
   private currencies: Array<string>;
 
-  constructor(public alertController: AlertController) {
+  constructor(public alertController: AlertController, public blockchainService: BlockchainService) {
     this.sellBtc = true;
     this.currencies = JSON.parse(JSON.stringify(DEFAULT_CURRENCIES));
   }
 
   ngOnInit() {
-
+    
   }
 
   async addCurrency() {
