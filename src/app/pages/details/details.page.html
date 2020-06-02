@@ -8,63 +8,65 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Marktkapitalisierung</ion-card-subtitle>
-            <ion-card-title>{{ details.marketCap.toLocaleString() }} USD</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Marktkapitalisierung</ion-card-subtitle>
+              <ion-card-title>{{ details.marketCap.toLocaleString() }} USD</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
 
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Anzahl aller Bitcoins im Umlauf</ion-card-subtitle>
-            <ion-card-title>{{ details.totalBc.toLocaleString() }} BTC</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Anzahl der Transaktionen in den letzten 24h</ion-card-subtitle>
-            <ion-card-title>{{ details.twentyFourHrTransactionCount.toLocaleString() }}</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Anzahl aller Bitcoins im Umlauf</ion-card-subtitle>
+              <ion-card-title>{{ details.totalBc.toLocaleString() }} BTC</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Anzahl der Transaktionen in den letzten 24h</ion-card-subtitle>
+              <ion-card-title>{{ details.twentyFourHrTransactionCount.toLocaleString() }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
 
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Anzahl gesendeter Bitcoin in den letzten 24h</ion-card-subtitle>
-            <ion-card-title>{{ details.twentyFourHrBtcSent.toLocaleString() }} BTC</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Aktuelle Hashrate</ion-card-subtitle>
-            <ion-card-title>{{ details.hashRate.toFixed(3) }} Ehash/s</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Anzahl gesendeter Bitcoin in den letzten 24h</ion-card-subtitle>
+              <ion-card-title>{{ details.twentyFourHrBtcSent.toLocaleString() }} BTC</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Aktuelle Hashrate</ion-card-subtitle>
+              <ion-card-title>{{ details.hashRate.toFixed(3) }} Ehash/s</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
 
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Aktueller Schwierigkeitsgrad</ion-card-subtitle>
-            <ion-card-title>{{ details.getDifficulty.toLocaleString() }}</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Aktueller Schwierigkeitsgrad</ion-card-subtitle>
+              <ion-card-title>{{ details.getDifficulty.toLocaleString() }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
