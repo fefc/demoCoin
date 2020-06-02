@@ -17,6 +17,8 @@ export class ConverterPage implements OnInit {
   private toBeConvertedValue: number;
   private convertedValue: number;
 
+  private updateInterval: any;
+
   constructor(public blockchainService: BlockchainService) {
     this.currencies = DEFAULT_CURRENCIES;
     this.selectedCurrency = this.currencies[0];
@@ -26,8 +28,14 @@ export class ConverterPage implements OnInit {
   }
 
   ngOnInit() {
-
+    //Update calculation every 30s, as rate can change
+    this.updateInterval = setInterval(this.convert, 30 * 1000);
   }
+
+  ngOnDestroy() {
+    clearInterval(this.updateInterval);
+  }
+
 
   convert() {
     if (this.selectedCurrency && this.toBeConvertedValue) {
