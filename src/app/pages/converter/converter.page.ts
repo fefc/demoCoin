@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-const DEFAULT_CURRENCIES: Array<string> = ['USD', 'EUR', 'YEN', 'AUS', 'SOO', 'TOO', 'BOO', 'LOO'];
+import { BlockchainService } from './../../services/blockchain/blockchain.service';
+
+const DEFAULT_CURRENCIES: Array<string> = ['EUR', 'USD', 'AUD', 'NZD', 'GBP'];
 
 @Component({
   selector: 'app-converter',
@@ -9,24 +11,30 @@ const DEFAULT_CURRENCIES: Array<string> = ['USD', 'EUR', 'YEN', 'AUS', 'SOO', 'T
 })
 export class ConverterPage implements OnInit {
 
-  private sellBtc: Boolean;
   private currencies: Array<string>;
+  private selectedCurrency: string;
 
   private toBeConvertedValue: number;
+  private convertedValue: number;
 
-  constructor() {
-    this.sellBtc = true;
-    this.currencies = JSON.parse(JSON.stringify(DEFAULT_CURRENCIES));
+  constructor(public blockchainService: BlockchainService) {
+    this.currencies = DEFAULT_CURRENCIES;
+    this.selectedCurrency = this.currencies[0];
 
     this.toBeConvertedValue = 0;
+    this.convertedValue = 0;
   }
 
   ngOnInit() {
 
   }
 
-  convertedValue() {
-    return this.toBeConvertedValue * 1.5;
+  convert() {
+    this.blockchainService.convertToBtc(this.selectedCurrency, this.toBeConvertedValue).then((value) => {
+      this.convertedValue = value;
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
 }

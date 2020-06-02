@@ -10,21 +10,15 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-select value="USD" interface="popover">
+      <ion-select [(ngModel)]="selectedCurrency" interface="popover" (ngModelChange)="convert()">
         <ion-select-option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</ion-select-option>
       </ion-select>
-      <ion-input  type="number" placeholder="0" slot="end" [(ngModel)]="toBeConvertedValue">
+      <ion-input  type="number" placeholder="0" slot="end" [(ngModel)]="toBeConvertedValue" (ngModelChange)="convert()">
       </ion-input>
     </ion-item>
-    <!--<ion-item>
-      <ion-button (click)="swap()">
-        <ion-icon slot="start" name="swap-vertical"></ion-icon>
-        Swap
-      </ion-button>
-    </ion-item>-->
     <ion-item>
       <ion-label>
-        BTC {{convertedValue()}}
+        {{ convertedValue }} BTC
       </ion-label>
     </ion-item>
   </ion-list>

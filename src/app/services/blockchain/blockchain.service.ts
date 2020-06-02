@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from  '@angular/common/http';
+import { HttpClient, HttpParams } from  '@angular/common/http';
 
 import { Rate } from './../../models/rate';
 import { Details } from './../../models/details';
@@ -58,6 +58,26 @@ export class BlockchainService {
       } catch (error) {
         reject(error);
       }
+    });
+  }
+
+  public convertToBtc(currency: string, value: number): Promise<number> {
+    return new Promise<number>(async (resolve, reject) => {
+      try {
+        const params = new HttpParams({
+            fromObject: {
+              currency: currency,
+              value: value.toString(),
+            }
+          });
+
+        const btc = await this.httpClient.get('https://blockchain.info/tobtc', {params: params}).toPromise();
+
+        resolve(Number(btc));
+      } catch (error) {
+        reject(error);
+      }
+
     });
   }
 
