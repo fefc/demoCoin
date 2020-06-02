@@ -21,8 +21,8 @@ export class ConverterPage implements OnInit {
     this.currencies = DEFAULT_CURRENCIES;
     this.selectedCurrency = this.currencies[0];
 
-    this.toBeConvertedValue = 0;
-    this.convertedValue = 0;
+    this.toBeConvertedValue = null;
+    this.convertedValue = null;
   }
 
   ngOnInit() {
@@ -30,11 +30,16 @@ export class ConverterPage implements OnInit {
   }
 
   convert() {
-    this.blockchainService.convertToBtc(this.selectedCurrency, this.toBeConvertedValue).then((value) => {
-      this.convertedValue = value;
-    }).catch((error) => {
-      console.log(error);
-    });
+    if (this.selectedCurrency && this.toBeConvertedValue) {
+      this.blockchainService.convertToBtc(this.selectedCurrency, this.toBeConvertedValue).then((value) => {
+        this.convertedValue = value;
+      }).catch((error) => {
+        console.log(error);
+        this.convertedValue = null;
+      });
+    } else {
+      this.convertedValue = null;
+    }
   }
 
 }

@@ -8,18 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-select [(ngModel)]="selectedCurrency" interface="popover" (ngModelChange)="convert()">
-        <ion-select-option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</ion-select-option>
-      </ion-select>
-      <ion-input  type="number" placeholder="0" slot="end" [(ngModel)]="toBeConvertedValue" (ngModelChange)="convert()">
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{ convertedValue }} BTC
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Was willst du Umrechnen?</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-select [(ngModel)]="selectedCurrency" interface="popover" (ngModelChange)="convert()">
+            <ion-select-option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</ion-select-option>
+          </ion-select>
+          <ion-input  type="number" placeholder="0" slot="end" [(ngModel)]="toBeConvertedValue" (ngModelChange)="convert()">
+          </ion-input>
+        </ion-item>
+        <ion-item class="result" lines="none">
+          <ion-select value="BTC" interface="popover" disabled>
+            <ion-select-option value="BTC">BTC</ion-select-option>
+          </ion-select>
+          <ion-input  type="text" placeholder="0" slot="end" [(ngModel)]="convertedValue" readonly>
+          </ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

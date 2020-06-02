@@ -1,0 +1,29 @@
+ion-content > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+ion-card {
+  max-width: 1000px;
+  margin: auto;
+}
+
+ion-card-header {
+  text-align: center;
+}
+
+ion-select {
+  max-width: none;
+}
+
+.result {
+  margin-top: 10px;
+}
+
+/*ion-select[disabled] {
+  opacity: 1;
+}*/
