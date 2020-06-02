@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 import { BlockchainService } from './../../services/blockchain/blockchain.service';
+import { ProfileService } from './../../services/profile/profile.service';
 
 import { Rate } from './../../models/rate';
 
@@ -23,15 +24,26 @@ export class DashboardPage implements OnInit {
   private availableRates: Array<Rate>;
   private displayedRates: Array<Rate>;
 
-  constructor(public alertController: AlertController, public blockchainService: BlockchainService) {
+  private myCoins: number;
+  private myCoinsEur: number;
+
+  constructor(public alertController: AlertController,
+              public blockchainService: BlockchainService,
+              public profileService: ProfileService) {
     this.availableRates = [];
     this.displayedRates = [];
+
+    this.myCoins = null;
+    this.myCoinsEur = null;
   }
 
   ngOnInit() {
     this.blockchainService.getExchangeRates().then((rates) => {
       this.availableRates = rates;
       this.displayedRates = rates.filter((r) => DEFAULT_CURRENCIES.includes(r.currency));
+
+      this.myCoins = this.profileService.getMyCoinsAmount();
+      this.convert();
 
     }).catch((error) => {
       console.log(error);
@@ -85,5 +97,18 @@ export class DashboardPage implements OnInit {
 
   deleteCurrency(index: number) {
     this.displayedRates.splice(index, 1);
+  }
+
+  convert() {
+    if (this.myCoins) {
+      this.blockchainService.convertToBtc('EUR', this.myCoins).then((value) => {
+        this.myCoinsEur = value;
+      }).catch((error) => {
+        console.log(error);
+        this.myCoinsEur = null;
+      });
+    } else {
+      this.myCoinsEur = null;
+    }
   }
 }

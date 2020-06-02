@@ -9,7 +9,7 @@ ion-grid {
     flex-grow: 0;
   }
 
-  ion-row {
+  .main-row, .secondary-row {
     height: 100%;
     overflow-y: hidden;
     flex-grow: 1;
@@ -64,5 +64,11 @@ ion-grid {
         }
       }
     }
+  }
+
+  .secondary-row {
+    height: auto;
+    flex-grow: 0;
+    padding: 50px;
   }
 }
