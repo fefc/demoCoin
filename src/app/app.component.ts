@@ -18,22 +18,22 @@ export class AppComponent implements OnInit {
       icon: 'file-tray'
     },
     {
-      title: 'Details',
+      title: 'Bitcoin Details',
       url: '/details',
       icon: 'file-tray-full'
     },
     {
-      title: 'Converter',
+      title: 'Bitcoin Umrechner',
       url: '/converter',
       icon: 'calculator'
     },
     {
-      title: 'Graph',
+      title: 'Bitcoin Diagramm',
       url: '/graph',
       icon: 'pulse'
     },
     {
-      title: 'My coins',
+      title: 'Meine Bitcoin',
       url: '/my-coins',
       icon: 'cash'
     }

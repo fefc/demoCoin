@@ -55,14 +55,14 @@ export class DashboardPage implements OnInit {
 
     if (inputs.length > 0) {
       alert = await this.alertController.create({
-        header: 'Add currencies',
+        header: 'Währungen hinzufügen',
         inputs: inputs,
         buttons: [
           {
-            text: 'Cancel',
+            text: 'Zurück',
             role: 'cancel',
           }, {
-            text: 'Add',
+            text: 'Hinzufügen',
             handler: (newRates) => {
               for (let newRate of newRates) {
                 this.displayedRates.push(newRate);
@@ -74,8 +74,8 @@ export class DashboardPage implements OnInit {
 
     } else {
       alert = await this.alertController.create({
-        header: 'Add currencies',
-        message: 'All currencies are already displayed',
+        header: 'Währungen hinzufügen',
+        message: 'Alle Währungen werden bereits angezeigt.',
         buttons: ['OK']
       });
     }
