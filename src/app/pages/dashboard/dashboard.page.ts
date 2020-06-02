@@ -5,6 +5,11 @@ import { BlockchainService } from './../../services/blockchain/blockchain.servic
 
 import { Rate } from './../../models/rate';
 
+const ONE_BTC: number = 1;
+const DECIMALS: number = 2;
+
+const DEFAULT_CURRENCIES: Array<string> = ['EUR', 'USD', 'AUD', 'NZD', 'GBP'];
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -12,7 +17,9 @@ import { Rate } from './../../models/rate';
 })
 export class DashboardPage implements OnInit {
 
-  private sellBtc: Boolean;
+  private readonly ONE_BTC: number = ONE_BTC;
+  private readonly DECIMALS: number = DECIMALS;
+
   private availableRates: Array<Rate>;
   private displayedRates: Array<Rate>;
 
@@ -23,8 +30,10 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
-    this.blockchainService.getExchangeRates().then((currencies) => {
-      this.availableRates = currencies;
+    this.blockchainService.getExchangeRates().then((rates) => {
+      this.availableRates = rates;
+      this.displayedRates = rates.filter((r) => DEFAULT_CURRENCIES.includes(r.currency));
+
     }).catch((error) => {
       console.log(error);
     });
@@ -78,9 +87,4 @@ export class DashboardPage implements OnInit {
   deleteCurrency(index: number) {
     this.displayedRates.splice(index, 1);
   }
-
-  swap() {
-    this.sellBtc = !this.sellBtc;
-  }
-
 }
