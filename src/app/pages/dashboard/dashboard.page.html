@@ -16,7 +16,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col class="left">
         <ion-list>
           <ion-item *ngFor="for let rate of displayedRates; let i = index" [lines]="i !== displayedRates.length - 1 ? 'full' : 'none'">
             <ion-label>{{ rate.buyPrice.toFixed(DECIMALS) }} {{ rate.currency }}</ion-label>
@@ -24,21 +24,21 @@
         </ion-list>
       </ion-col>
       <ion-col>
-        <ion-item lines="none">
+        <ion-item lines="none" class="buys">
           <ion-label>KAUFT</ion-label>
         </ion-item>
       </ion-col>
       <ion-col>
-        <ion-item lines="none">
+        <ion-item lines="none" class="btc">
           <ion-label>{{ ONE_BTC.toFixed(DECIMALS) }} BTC</ion-label>
         </ion-item>
       </ion-col>
       <ion-col>
-        <ion-item lines="none">
+        <ion-item lines="none" class="sells">
           <ion-label>VERKAUFT</ion-label>
         </ion-item>
       </ion-col>
-      <ion-col>
+      <ion-col class="right">
         <ion-list>
           <ion-item *ngFor="for let rate of displayedRates; let i = index" [lines]="i !== displayedRates.length - 1 ? 'full' : 'none'">
             <ion-label>{{ rate.sellPrice.toFixed(DECIMALS) }} {{ rate.currency }}</ion-label>

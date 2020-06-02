@@ -3,18 +3,58 @@ ion-grid {
 
   display: flex;
   flex-flow: column;
+  padding: 0;
 
   .header-row {
     flex-grow: 0;
   }
 
   ion-row {
+    height: 100%;
+    overflow-y: hidden;
     flex-grow: 1;
+
+    .left {
+      overflow-y: auto;
+      height: 100%;
+
+      ion-list {
+        border-top: solid gray 1px;
+        border-bottom: solid gray 1px;
+        border-right: solid gray 1px;
+      }
+    }
+
+    .right {
+      overflow-y: auto;
+      height: 100%;
+
+      ion-list {
+        border-top: solid gray 1px;
+        border-bottom: solid gray 1px;
+        border-left: solid gray 1px;
+      }
+    }
 
     ion-col {
       display: flex;
       flex-flow: column;
       justify-content: center;
+      padding: 0;
+
+      .btc {
+        border: solid gray 1px;
+      }
+
+      .buys {
+        border-top: solid gray 1px;
+        border-bottom: solid transparent 1px;
+      }
+
+      .sells {
+        border-top: solid transparent 1px;
+        border-bottom: solid gray 1px;
+      }
 
       ion-item {
         text-align: center;
