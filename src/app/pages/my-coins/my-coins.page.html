@@ -8,5 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-item *ngIf="profileService.isStorageAvailable()">
+    <ion-input  type="number" placeholder="0" slot="end" [(ngModel)]="myCoinsAmount" (ngModelChange)="profileService.setMyCointsAmount(myCoinsAmount)">
+    </ion-input>
+  </ion-item>
 
 </ion-content>

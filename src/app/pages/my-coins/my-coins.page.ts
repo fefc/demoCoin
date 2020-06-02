@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProfileService } from './../../services/profile/profile.service';
+
 @Component({
   selector: 'app-my-coins',
   templateUrl: './my-coins.page.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCoinsPage implements OnInit {
 
-  constructor() { }
+  private myCoinsAmount: number;
 
-  ngOnInit() {
+  constructor(public profileService: ProfileService) {
+    this.myCoinsAmount = this.profileService.getMyCoinsAmount();
   }
 
+  ngOnInit() {
+
+  }
 }
