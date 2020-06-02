@@ -58,7 +58,7 @@ export class BlockchainService {
       } catch (error) {
         reject(error);
       }
-  });
-}
+    });
+  }
 
 }
